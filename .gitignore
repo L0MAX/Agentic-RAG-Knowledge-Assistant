@@ -25,4 +25,3 @@ Thumbs.db
 postgres_data/
 uploads/
 *.sqlite3
-TODO.md
