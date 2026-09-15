@@ -2,11 +2,13 @@ import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.api.v1 import api_router
 from app.core.config import get_settings
+from app.core.exceptions import AppError
 from app.core.logging import configure_logging
 
 logger = logging.getLogger(__name__)
@@ -39,6 +41,13 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     application.include_router(api_router, prefix=settings.api_v1_prefix)
+
+    @application.exception_handler(AppError)
+    async def app_error_handler(_request: Request, exc: AppError) -> JSONResponse:
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"code": exc.code, "message": exc.message},
+        )
 
     @application.get("/health", include_in_schema=True)
     def root_health():

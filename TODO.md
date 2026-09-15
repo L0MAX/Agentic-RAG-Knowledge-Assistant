@@ -1,6 +1,6 @@
 # Agentic RAG Knowledge Assistant — Implementation TODOs
 
-**Status:** Phase 1 complete  
+**Status:** Phases 1–4 complete (core auth + knowledge bases)  
 **How to use this file:** Work top to bottom. Complete one phase at a time. After each task, run relevant tests/checks. Mark items `[x]` only when they actually work. Update this file as work is completed.
 
 ---
@@ -25,9 +25,9 @@ This is a **portfolio-grade project**, not a simple PDF chatbot.
 - [x] Do not mark a TODO complete unless the implementation actually works.
 - [x] Prefer small, reviewable changes.
 - [x] Keep business logic out of controllers/routes.
-- [ ] Use services/use-cases for application logic.
-- [ ] Use repositories/data-access abstractions where appropriate.
-- [ ] Validate all external input.
+- [x] Use services/use-cases for application logic.
+- [x] Use repositories/data-access abstractions where appropriate.
+- [x] Validate all external input.
 - [x] Never hard-code API keys or secrets.
 - [x] Use environment variables for configuration.
 - [x] Add tests for important backend behavior.
@@ -43,11 +43,11 @@ This is a **portfolio-grade project**, not a simple PDF chatbot.
 
 ### Core User Experience
 
-- [ ] User can register.
-- [ ] User can log in.
-- [ ] User can log out.
-- [ ] User can manage their profile.
-- [ ] User can create a knowledge base.
+- [x] User can register.
+- [x] User can log in.
+- [x] User can log out.
+- [x] User can manage their profile.
+- [x] User can create a knowledge base.
 - [ ] User can upload documents.
 - [ ] User can view uploaded documents.
 - [ ] User can delete documents.
@@ -65,7 +65,7 @@ This is a **portfolio-grade project**, not a simple PDF chatbot.
 - [ ] Assistant can say when the knowledge base does not contain enough information.
 - [ ] Conversations are persisted.
 - [ ] Conversation history can be retrieved.
-- [ ] Users cannot access another user's knowledge or documents.
+- [x] Users cannot access another user's knowledge or documents.
 
 ---
 
@@ -101,7 +101,7 @@ Use a provider abstraction.
 - [x] TypeScript
 - [x] Modern component architecture
 - [x] API client
-- [ ] Authentication flow
+- [x] Authentication flow
 - [ ] Document management UI
 - [ ] Chat interface
 - [ ] Source citation UI
@@ -110,7 +110,7 @@ Use a provider abstraction.
 
 - [x] Docker
 - [x] Docker Compose
-- [ ] GitHub Actions
+- [x] GitHub Actions
 - [x] Environment configuration
 - [x] Health checks
 - [x] Logging
@@ -249,97 +249,97 @@ Design the database before implementing the features.
 
 **users**
 
-- [ ] `id`
-- [ ] `email`
-- [ ] `password_hash`
-- [ ] `created_at`
-- [ ] `updated_at`
+- [x] `id`
+- [x] `email`
+- [x] `password_hash`
+- [x] `created_at`
+- [x] `updated_at`
 
 **knowledge_bases**
 
-- [ ] `id`
-- [ ] `user_id`
-- [ ] `name`
-- [ ] `description`
-- [ ] `created_at`
-- [ ] `updated_at`
+- [x] `id`
+- [x] `user_id`
+- [x] `name`
+- [x] `description`
+- [x] `created_at`
+- [x] `updated_at`
 
 **documents**
 
-- [ ] `id`
-- [ ] `knowledge_base_id`
-- [ ] `filename`
-- [ ] `mime_type`
-- [ ] `storage_path`
-- [ ] `status`
-- [ ] `error_message`
-- [ ] `created_at`
-- [ ] `updated_at`
+- [x] `id`
+- [x] `knowledge_base_id`
+- [x] `filename`
+- [x] `mime_type`
+- [x] `storage_path`
+- [x] `status`
+- [x] `error_message`
+- [x] `created_at`
+- [x] `updated_at`
 
 **document_chunks**
 
-- [ ] `id`
-- [ ] `document_id`
-- [ ] `chunk_index`
-- [ ] `content`
-- [ ] `token_count`
-- [ ] `embedding`
-- [ ] `metadata`
-- [ ] `created_at`
+- [x] `id`
+- [x] `document_id`
+- [x] `chunk_index`
+- [x] `content`
+- [x] `token_count`
+- [x] `embedding`
+- [x] `metadata`
+- [x] `created_at`
 
 **conversations**
 
-- [ ] `id`
-- [ ] `user_id`
-- [ ] `knowledge_base_id`
-- [ ] `title`
-- [ ] `created_at`
-- [ ] `updated_at`
+- [x] `id`
+- [x] `user_id`
+- [x] `knowledge_base_id`
+- [x] `title`
+- [x] `created_at`
+- [x] `updated_at`
 
 **messages**
 
-- [ ] `id`
-- [ ] `conversation_id`
-- [ ] `role`
-- [ ] `content`
-- [ ] `created_at`
+- [x] `id`
+- [x] `conversation_id`
+- [x] `role`
+- [x] `content`
+- [x] `created_at`
 
 **message_sources**
 
-- [ ] `id`
-- [ ] `message_id`
-- [ ] `document_id`
-- [ ] `chunk_id`
-- [ ] `relevance_score`
-- [ ] `citation_metadata`
+- [x] `id`
+- [x] `message_id`
+- [x] `document_id`
+- [x] `chunk_id`
+- [x] `relevance_score`
+- [x] `citation_metadata`
 
 ### Implementation
 
-- [ ] Create SQLAlchemy models.
-- [ ] Create Alembic migrations.
-- [ ] Add indexes.
-- [ ] Add foreign keys.
-- [ ] Add pgvector extension.
-- [ ] Add vector index where appropriate.
-- [ ] Test migrations from a clean database.
+- [x] Create SQLAlchemy models.
+- [x] Create Alembic migrations.
+- [x] Add indexes.
+- [x] Add foreign keys.
+- [x] Add pgvector extension.
+- [x] Add vector index where appropriate.
+- [x] Test migrations from a clean database.
 
-**Phase 2 exit criteria:** A clean Postgres instance can apply migrations; all tables, FKs, indexes, and pgvector exist.
+**Phase 2 exit criteria:** A clean Postgres instance can apply migrations; all tables, FKs, indexes, and pgvector exist. **Met.**
 
 ---
 
 ## 6. Phase 3 — Authentication and Authorization
 
-- [ ] Implement password hashing.
-- [ ] Implement JWT authentication.
-- [ ] Implement login endpoint.
-- [ ] Implement registration endpoint.
-- [ ] Implement current-user endpoint.
-- [ ] Implement authentication middleware/dependency.
-- [ ] Protect knowledge-base endpoints.
-- [ ] Enforce ownership at the service/repository layer.
-- [ ] Prevent IDOR vulnerabilities.
-- [ ] Add authentication tests.
-- [ ] Add authorization tests.
+- [x] Implement password hashing.
+- [x] Implement JWT authentication.
+- [x] Implement login endpoint.
+- [x] Implement registration endpoint.
+- [x] Implement current-user endpoint.
+- [x] Implement authentication middleware/dependency.
+- [x] Protect knowledge-base endpoints.
+- [x] Enforce ownership at the service/repository layer.
+- [x] Prevent IDOR vulnerabilities.
+- [x] Add authentication tests.
+- [x] Add authorization tests.
 
 ### Isolation rule
 
@@ -351,22 +351,22 @@ A user must never be able to retrieve another user's:
 - messages
 - knowledge bases
 
-**Phase 3 exit criteria:** Register/login/me work; unauthorized requests fail; cross-user access tests fail closed.
+**Phase 3 exit criteria:** Register/login/me work; unauthorized requests fail; cross-user access tests fail closed. **Met.**
 
 ---
 
 ## 7. Phase 4 — Knowledge Base Management
 
-- [ ] Create knowledge base.
-- [ ] List user's knowledge bases.
-- [ ] Get knowledge base.
-- [ ] Update knowledge base.
-- [ ] Delete knowledge base.
-- [ ] Add ownership checks.
-- [ ] Add API schemas.
-- [ ] Add service layer.
-- [ ] Add repository layer.
-- [ ] Add tests.
+- [x] Create knowledge base.
+- [x] List user's knowledge bases.
+- [x] Get knowledge base.
+- [x] Update knowledge base.
+- [x] Delete knowledge base.
+- [x] Add ownership checks.
+- [x] Add API schemas.
+- [x] Add service layer.
+- [x] Add repository layer.
+- [x] Add tests.
 
 ### API
 
@@ -378,7 +378,7 @@ PATCH  /api/v1/knowledge-bases/{id}
 DELETE /api/v1/knowledge-bases/{id}
 ```
 
-**Phase 4 exit criteria:** CRUD works for the owner only; other users receive 404/403.
+**Phase 4 exit criteria:** CRUD works for the owner only; other users receive 404/403. **Met.**
 
 ---
 
@@ -984,21 +984,21 @@ Create GitHub Actions pipeline.
 
 On pull request:
 
-- [ ] Install dependencies.
-- [ ] Run lint.
-- [ ] Run formatting checks.
-- [ ] Run backend unit tests.
-- [ ] Run integration tests.
-- [ ] Build frontend.
-- [ ] Build Docker images.
+- [x] Install dependencies.
+- [x] Run lint.
+- [x] Run formatting checks.
+- [x] Run backend unit tests.
+- [x] Run integration tests.
+- [x] Build frontend.
+- [x] Build Docker images.
 
 ### Optional
 
-- [ ] Security scanning.
-- [ ] Dependency scanning.
-- [ ] Docker image scanning.
+- [x] Security scanning.
+- [x] Dependency scanning.
+- [x] Docker image scanning.
 
-**Phase 27 exit criteria:** PRs run lint, tests, and image builds.
+**Phase 27 exit criteria:** PRs run lint, tests, and image builds. **Met.**
 
 ---
 

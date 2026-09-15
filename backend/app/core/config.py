@@ -31,8 +31,9 @@ class Settings(BaseSettings):
     embedding_model: str = "text-embedding-3-small"
     embedding_dimensions: int = 1536
 
-    jwt_secret: str = "change-me-in-development"
+    jwt_secret: str = "change-me-in-development-use-a-long-secret"
     jwt_algorithm: str = "HS256"
+    jwt_expire_minutes: int = 60
 
     cors_origins: str = "http://localhost:5173"
 

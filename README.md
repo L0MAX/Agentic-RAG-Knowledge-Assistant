@@ -2,7 +2,7 @@
 
 Production-oriented knowledge assistant: authenticated users upload documents, an agent decides when to retrieve, and answers are grounded in cited sources.
 
-This repository is a monorepo (`backend/`, `frontend/`, `docs/`). Implementation follows `TODO.md` one phase at a time. Phase 1 is project initialization only.
+This repository is a monorepo (`backend/`, `frontend/`, `docs/`). Implementation follows `TODO.md` one phase at a time.
 
 ## Local setup
 
@@ -20,6 +20,7 @@ cd backend
 python -m venv .venv
 source .venv/Scripts/activate  # Windows Git Bash
 pip install -r requirements-dev.txt
+alembic upgrade head
 pytest
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
