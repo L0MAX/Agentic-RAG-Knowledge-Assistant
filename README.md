@@ -51,6 +51,23 @@ docker compose up --build
 
 Never commit `.env` or API keys.
 
+## Git hooks
+
+Husky runs the same local checks CI uses so broken lint or tests fail before they reach GitHub.
+
+From the **repository root** (not `frontend/`):
+
+```bash
+npm install
+```
+
+That installs:
+
+- **pre-commit** — Ruff lint/format on staged Python files; frontend `tsc` when TypeScript files are staged
+- **pre-push** — full backend Ruff check, `pytest`, and frontend production build
+
+Python tools run from `backend/.venv` when that virtualenv exists. Integration tests skip if Postgres is not up (`docker compose up postgres -d`). Skip a hook once with `git commit --no-verify` or `HUSKY=0 git push`.
+
 ## Documentation
 
 - [Architecture](docs/architecture.md)

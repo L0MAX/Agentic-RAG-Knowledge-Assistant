@@ -997,6 +997,7 @@ On pull request:
 - [x] Security scanning.
 - [x] Dependency scanning.
 - [x] Docker image scanning.
+- [x] Local git hooks (Husky pre-commit / pre-push).
 
 **Phase 27 exit criteria:** PRs run lint, tests, and image builds. **Met.**
 
