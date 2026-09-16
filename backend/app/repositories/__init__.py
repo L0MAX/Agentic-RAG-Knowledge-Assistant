@@ -1,1 +1,6 @@
-"""Data-access abstractions. Repositories are added with domain tables in Phase 2."""
+"""Data-access abstractions. Callers go through repositories, not ad-hoc queries in routers."""
+
+from app.repositories.knowledge_base import KnowledgeBaseRepository
+from app.repositories.user import UserRepository
+
+__all__ = ["KnowledgeBaseRepository", "UserRepository"]

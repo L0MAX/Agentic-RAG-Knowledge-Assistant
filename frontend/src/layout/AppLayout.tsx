@@ -1,12 +1,21 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-const links = [
-  { to: "/login", label: "Login" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/chat", label: "Chat" },
-];
+import { useAuth } from "../auth/AuthContext";
 
 export function AppLayout() {
+  const { user, logout } = useAuth();
+
+  const links = user
+    ? [
+        { to: "/dashboard", label: "Dashboard" },
+        { to: "/chat", label: "Chat" },
+        { to: "/profile", label: "Profile" },
+      ]
+    : [
+        { to: "/login", label: "Login" },
+        { to: "/register", label: "Register" },
+      ];
+
   return (
     <div className="shell">
       <header className="topbar">
@@ -27,6 +36,11 @@ export function AppLayout() {
               {link.label}
             </NavLink>
           ))}
+          {user ? (
+            <button type="button" className="nav-link ghost-nav" onClick={() => void logout()}>
+              Log out
+            </button>
+          ) : null}
         </nav>
       </header>
       <main className="content">
