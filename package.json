@@ -1,0 +1,20 @@
+{
+  "name": "agentic-rag-knowledge",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Git hooks and workspace scripts for the Agentic RAG Knowledge Assistant",
+  "scripts": {
+    "prepare": "husky",
+    "precommit": "lint-staged",
+    "prepush": "npm run lint:backend && npm run test:backend && npm run build:frontend",
+    "lint:backend": "node scripts/backend.mjs ruff check app tests && node scripts/backend.mjs ruff format --check app tests",
+    "lint:backend:fix": "node scripts/backend.mjs ruff check --fix app tests && node scripts/backend.mjs ruff format app tests",
+    "test:backend": "node scripts/backend.mjs pytest tests -q",
+    "build:frontend": "npm --prefix frontend run build",
+    "typecheck:frontend": "npm --prefix frontend run typecheck"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6"
+  }
+}

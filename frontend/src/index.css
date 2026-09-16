@@ -144,13 +144,22 @@ input {
   font-size: 0.95rem;
 }
 
+.lede a {
+  color: #c9943e;
+}
+
 .form input,
+.form textarea,
 .composer input {
   background: #14110d;
   border: 1px solid rgba(244, 239, 228, 0.14);
   color: #f4efe4;
   border-radius: 0.7rem;
   padding: 0.75rem 0.9rem;
+}
+
+.form textarea {
+  resize: vertical;
 }
 
 .form button,
@@ -221,6 +230,39 @@ input {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.75rem;
+}
+
+.kb-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.kb-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  background: #14110d;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+}
+
+.kb-list p {
+  margin: 0.25rem 0 0;
+  color: #a79b88;
+}
+
+button.ghost,
+.ghost-nav {
+  background: transparent;
+  color: #d9d1c3;
+  border: 1px solid rgba(244, 239, 228, 0.14);
+  border-radius: 0.7rem;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
 }
 
 @media (max-width: 720px) {
